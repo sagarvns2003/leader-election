@@ -2,7 +2,7 @@
 
 A light weight leader election library based on JGroups (http://www.jgroups.org/) which uses reliable TCP protocol for their node communication.
 
-#How to use in your application...
+### How to use in your application...
 ```
 Integer communicationPort = 3030;   //Node will use this port to communicate other nodes. This must not be your application port number;
 String communicationChannelName = "testChannelName"; //Node will use this channel to communicate other nodes. Recommend to provide application name as channel name
@@ -17,5 +17,5 @@ leaderElectionService.isLeader() method as per your need.
 
 ```
 
-#Log recommendation
+### Log recommendation...
 Redirect jgroups logs to separate file for easy tracking in your application. This package should be redirected... org.jgroups & me.vidya.leader
