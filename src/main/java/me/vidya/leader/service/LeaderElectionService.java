@@ -9,12 +9,14 @@ import java.util.stream.Collectors;
 
 import org.jgroups.Address;
 import org.jgroups.JChannel;
+import org.jgroups.Message;
 import org.jgroups.Receiver;
 import org.jgroups.View;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import lombok.RequiredArgsConstructor;
+import me.vidya.leader.listener.LeaderChannelListener;
 
 /**
  * This LeaderElectionService class is having
@@ -39,11 +41,18 @@ public class LeaderElectionService {
 	}
 
 	public void connect() throws Exception {
+
 		Receiver receiver = new Receiver() {
+
 			@Override
 			public void viewAccepted(View newView) {
 				LOGGER.info("Leader election members changed now... {}", newView.getMembers());
 				LOGGER.info(leaderInfo());
+			}
+
+			@Override
+			public void receive(Message msg) {
+				LOGGER.info("New message: {} recieved from: {}", msg.getObject(), msg.getSrc());
 			}
 		};
 		this.connect(receiver);
@@ -59,7 +68,9 @@ public class LeaderElectionService {
 		// Create new JChannel
 		channel = new JChannel(this.prepareConfiguration());
 		channel.setName(this.currentHostname + "[" + this.communicationPort + "]");
+		channel.addChannelListener(new LeaderChannelListener());
 		channel.setReceiver(receiver);
+		channel.setDiscardOwnMessages(true); // Prevents receiving own sent message
 		channel.connect(this.communicationChannelName);
 
 		// Added hook to disconnect this node when getting shutdown
@@ -67,6 +78,10 @@ public class LeaderElectionService {
 			Runtime.getRuntime().addShutdownHook(new Thread(this::disconnect));
 		} catch (Exception e) {
 		}
+	}
+
+	public void broadcast(Message message) throws Exception {
+		this.channel.send(message);
 	}
 
 	public Address getLeader() {
@@ -101,10 +116,9 @@ public class LeaderElectionService {
 	}
 
 	public void disconnect() {
-		LOGGER.info("Disconnecting...");
 		if (Objects.nonNull(this.channel)) {
+			LOGGER.info("Disconnecting...");
 			channel.close();
-			LOGGER.info("Disconnected and closed.");
 		}
 	}
 
