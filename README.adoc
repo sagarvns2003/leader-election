@@ -1,0 +1,59 @@
+
+= leader-election
+:author: Vidya Sagar Gupta <v3sagar@gmail.com>
+:toc2:
+:toclevels: 3
+:icons:
+:homepage: https://github.com/sagarvns2003/leader-election
+:source-highlighter: pygments
+
+== Overview
+
+A light weight leader election library based on link:$$http:///jgroups.org$$[JGroups] which uses reliable TCP protocol for their member communication.
+
+It provides the following functionality:
+
+* Joining a given cluster (becoming a member)
+* Once joined it can broadcast(send) messages to other members
+* Getting leader member from the same cluster. Also can get a list of the members in the same cluster
+* Determine if the current node is leader or not.
+* Registering callback methods that are invoked when
+** a message is received
+** a member joins
+** a member leaves
+* Disconnecting(leaving) a cluster
+
+
+== Determining Leader Member
+
+Below code shows how to determine the leader member in your application.
+
+[source,java]
+----
+Integer communicationPort = 3030;   //Node will use this port to communicate other nodes. This must not be your application port number;
+String communicationChannelName = "testChannelName"; //Node will use this channel to communicate other nodes. Recommend to provide application name as channel name
+String currentHostname = "qcl2009566.bk.cloud.in.abc";  //Current host name where application is going to deploy.
+List<String> memberHostnames = List.of("qcl2009566.bk.cloud.in.abc", "qcl2009567.bk.cloud.in.abc", "qcl2009568.bk.cloud.in.abc");  //All host names where the same application is going to deploy
+
+LeaderElectionService leaderElectionService = new LeaderElectionService(communicationPort, communicationChannelName, currentHostname, memberHostnames);
+leaderElectionService.connect();  //Node has joined the cluster
+
+//Now you can use this method as per your need.
+leaderElectionService.isLeader()
+----
+
+== Broadcasting & Receiving Message
+
+Below code sample shows how to send and receive messages.
+
+[source,java]
+----
+
+----
+
+== Log Recommendation
+I would like to recommend to redirect `jgroups` logs to separate file for easy tracking in your application. These packages should be redirected... `org.jgroups` & `me.vidya.leader`
+
+
+== Credit
+Credit goes to link:$$https://github.com/belaban$$[Bela Ban] and link:$$http://jgroups.org$$[http://www.jgroups.org]
