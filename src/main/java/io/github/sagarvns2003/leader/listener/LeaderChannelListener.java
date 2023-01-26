@@ -1,4 +1,4 @@
-package me.vidya.leader.listener;
+package io.github.sagarvns2003.leader.listener;
 
 import org.jgroups.ChannelListener;
 import org.jgroups.JChannel;

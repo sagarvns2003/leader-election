@@ -1,4 +1,4 @@
-package me.vidya.leader.service;
+package io.github.sagarvns2003.leader.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -9,7 +9,6 @@ import java.util.List;
 import org.jgroups.Message;
 import org.jgroups.ObjectMessage;
 import org.jgroups.Receiver;
-import org.jgroups.View;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;

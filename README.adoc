@@ -52,8 +52,4 @@ Below code sample shows how to send and receive messages.
 ----
 
 == Log Recommendation
-I would like to recommend to redirect `jgroups` logs to separate file for easy tracking in your application. These packages should be redirected... `org.jgroups` & `me.vidya.leader`
-
-
-== Credit
-Credit goes to link:$$https://github.com/belaban$$[Bela Ban] and link:$$http://jgroups.org$$[http://www.jgroups.org]
+I would like to recommend to redirect `jgroups` logs to separate file for easy tracking in your application. These packages should be redirected... `org.jgroups` & `io.github.sagarvns2003.leader`

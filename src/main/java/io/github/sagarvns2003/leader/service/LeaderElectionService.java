@@ -1,4 +1,4 @@
-package me.vidya.leader.service;
+package io.github.sagarvns2003.leader.service;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -15,8 +15,8 @@ import org.jgroups.View;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import io.github.sagarvns2003.leader.listener.LeaderChannelListener;
 import lombok.RequiredArgsConstructor;
-import me.vidya.leader.listener.LeaderChannelListener;
 
 /**
  * This LeaderElectionService class is having
