@@ -53,3 +53,7 @@ Below code sample shows how to send and receive messages.
 
 == Log Recommendation
 I would like to recommend to redirect `jgroups` logs to separate file for easy tracking in your application. These packages should be redirected... `org.jgroups` & `io.github.sagarvns2003.leader`
+
+
+== Download Latest Artifact
+[Download the latest jar](https://search.maven.org/search?q=g:io.github.sagarvns2003%20AND%20a:leader-election)
