@@ -56,4 +56,4 @@ I would like to recommend to redirect `jgroups` logs to separate file for easy t
 
 
 == Download Latest Artifact
-[Download the latest jar](https://search.maven.org/search?q=g:io.github.sagarvns2003%20AND%20a:leader-election)
+link:$$https://search.maven.org/search?q=g:io.github.sagarvns2003%20AND%20a:leader-election$$[Download the latest jar]
