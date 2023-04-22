@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 
 import me.alexpanov.net.FreePortFinder;
 
-public class LeaderElectionServiceTest {
+class LeaderElectionServiceTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(LeaderElectionServiceTest.class);
 

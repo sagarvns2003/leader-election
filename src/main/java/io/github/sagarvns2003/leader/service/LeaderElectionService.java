@@ -19,7 +19,6 @@ import io.github.sagarvns2003.leader.listener.LeaderChannelListener;
 import lombok.RequiredArgsConstructor;
 
 /**
- * This LeaderElectionService class is having
  * 
  * @since 0.0.1
  * @author Vidya Sagar Gupta
@@ -37,7 +36,7 @@ public class LeaderElectionService {
 	private JChannel channel = null;
 
 	public boolean isConnected() {
-		return Objects.nonNull(this.channel) && this.channel.isConnected();
+		return (Objects.nonNull(this.channel) && this.channel.isConnected());
 	}
 
 	public void connect() throws Exception {
